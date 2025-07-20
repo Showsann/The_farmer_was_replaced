@@ -15,14 +15,6 @@ It is a programming game where you use a **subset** of Python to automate farmin
 - Type hinting
 - Inlined statements (e.g., `else: return False`)
 
-## Instructions for using the code
-### Setting up the code:
-1. Get the files in one of two ways
-    - Clone the repository using git (recommended: directly into your save directory).
-    - Download individual files and their dependencies (import statements at the top).
-2. Place the ".py" files inside a save directory, along with a save file. By default on windows it will be located in:
-
-(C:\Users\ **YourUser** \AppData\LocalLow\TheFarmerWasReplaced\TheFarmerWasReplaced\Saves\ **Yoursave** )
 ### Executing the code from inside the game
 - Run "timed_run.py" from inside the game if you want to do a run with my code
 - Run "method_tester.py" to play around with the different farming methods I've made over the past few weeks (there's quite a few, many obsolete.)
