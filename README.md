@@ -15,13 +15,6 @@ It is a programming game where you use a **subset** of Python to automate farmin
 - Type hinting
 - Inlined statements (e.g., `else: return False`)
 
-### Executing the code from inside the game
-- Run "timed_run.py" from inside the game if you want to do a run with my code
-- Run "method_tester.py" to play around with the different farming methods I've made over the past few weeks (there's quite a few, many obsolete.)
-### Using the (external) tools I made
-Anything located in the "tools" subdirectory will require you have Python installed and configured, you should be able to just run them without any dependencies unless specified otherwise, consult the local README for instructions.
-
-
 ## Known issues and future plans
 
 - Create the timed run scripts and auto unlocking.
