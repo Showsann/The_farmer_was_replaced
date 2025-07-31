@@ -1,10 +1,10 @@
 # Simulation parameters
-filename    = "sim1"                            # file to simulate
-sim_unlocks = Unlocks                           # start with all unlocks
+filename    = "sim1"                               # file to simulate
+sim_unlocks = None                                 # start with no unlocks
 sim_items   = {Items.Carrot: 10000, Items.Hay: 50} # Start with Carrots and Hay
-sim_globals = {}                              # no extra globals
-seed        = 0                                 # random seed
-speedup     = 1                                 # normal speed
+sim_globals = {}                                   # no extra globals
+seed        = 0                                    # random seed
+speedup     = 1                                    # normal speed
 
 # Import necessary modules
 from helpers import move_to, x, y, item_caps, harvest_now, water, soil

@@ -1,6 +1,7 @@
 from helpers import (
 	item_caps,
 	target_items,
+	unlockables,
 	try_unlock
 )
 import farm
@@ -19,3 +20,4 @@ while True:
 	if not did_refill:
 		clear()
 		do_a_flip()
+		print("Fuck You!")

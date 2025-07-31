@@ -6,9 +6,9 @@ item_caps = {
     Items.Bone : 1000000,
     Items.Cactus : 1000000,
     Items.Power : 100000,
+    Items.Weird_Substance : 500000,
     Items.Gold : 1000000,
     Items.Fertilizer : 10000,
-    Items.Weird_Substance : 100000
     }
 
 x = get_pos_x()
@@ -53,53 +53,33 @@ target_items = [
 ]
 
 unlockables = [
-	Unlocks.Loops,
-	Unlocks.Speed,
-	Unlocks.Grass,
-	Unlocks.Expand,
-	Unlocks.Plant,
-	Unlocks.Carrots,
-	Unlocks.Debug,
-	Unlocks.Operators,
-	Unlocks.Watering,
-	Unlocks.Trees,
-	Unlocks.Debug_2,
-	Unlocks.Timing,
-	Unlocks.Senses,
-	Unlocks.Variables,
-	Unlocks.Fertilizer,
-	Unlocks.Sunflowers,
-	Unlocks.Pumpkins,
-	Unlocks.Simulation,
-	Unlocks.Lists,
-	Unlocks.Functions,
-	Unlocks.Cactus,
-	Unlocks.Dinosaurs,
-	Unlocks.Mazes,
-	Unlocks.Leaderboard,
-	Unlocks.Dictionaries,
-	Unlocks.Import,
-	Unlocks.Utilities,
-	Unlocks.Costs,
-	Unlocks.Polyculture,
-	Unlocks.Auto_Unlock,
+    Unlocks.Loops, Unlocks.Speed, Unlocks.Grass, Unlocks.Expand,
+    Unlocks.Plant, Unlocks.Carrots, Unlocks.Debug, Unlocks.Operators,
+    Unlocks.Watering, Unlocks.Trees, Unlocks.Debug_2, Unlocks.Timing,
+    Unlocks.Senses, Unlocks.Variables, Unlocks.Fertilizer,
+    Unlocks.Sunflowers, Unlocks.Pumpkins, Unlocks.Simulation,
+    Unlocks.Lists, Unlocks.Functions, Unlocks.Cactus,
+    Unlocks.Dinosaurs, Unlocks.Mazes, Unlocks.Leaderboard,
+    Unlocks.Dictionaries, Unlocks.Import, Unlocks.Utilities,
+    Unlocks.Costs, Unlocks.Polyculture, Unlocks.Auto_Unlock,
 ]
 
-
 def try_unlock():
-    for u in unlockables:
-        cost = get_cost(u)
-        if cost == {}:
-            continue
+	while True:
+		for unlock_key in unlockables:
+			cost = get_cost(unlock_key)
+			if not cost:
+				continue
 
-        affordable = True
-        for item, amt, in cost.items():
-            if num_items(item) < amt:
-                break
+			can_afford = True
 
-        if affordable:
-            unlock(u)
-            return True
-    return False
+			# Check if cost is a dictionary
+			for key in cost:
+				if num_items(key) < cost[key]:
+					can_afford = False
+					break
 
-#TODO: Fix the farm code so that each unit is independent and operates off the main script.
+			if can_afford:
+				unlock(unlock_key)
+				return True
+		return False
