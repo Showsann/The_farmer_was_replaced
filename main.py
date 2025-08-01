@@ -20,4 +20,4 @@ while True:
 	if not did_refill:
 		clear()
 		do_a_flip()
-		print("Fuck You!")
+		print("Job Done!")
