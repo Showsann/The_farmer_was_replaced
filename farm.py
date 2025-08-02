@@ -343,7 +343,8 @@ def treasure_hunt():
         if get_entity_type()==Entities.Treasure:
             harvest()
             return True
-        
+            
+#weird_farm is not working, investigate and fix        
 def weird_farm():
     for i in range(ws):
         harvest_now()
