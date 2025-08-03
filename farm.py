@@ -1,41 +1,40 @@
-from helpers import item_caps, x, y, ws, move_to, soil, water, harvest_now
+from helpers import item_caps, x, y, ws, move_to, soil, water, harvest_now, soil_prep
 
 # Hay Here
 def hay_harvest():
-    clear()
-    for i in range(ws):
-        harvest_now()
-        plant(Entities.Grass)
-        move(North)
-    move(East)
+    while True:        
+        for i in range(ws):
+            harvest_now()
+            move(North)
+        move(East)
 
 # Wood Here		
 def wood_harvest():
-    clear()
-    for i in range(ws):
-        harvest_now()
-    if (get_pos_x() % 2 == 0 and get_pos_y() == 1) or (get_pos_x() % 2 == 1 and get_pos_y() % 2 == 0):
-        harvest_now()
-        water()
-        plant(Entities.Tree)
-    else:
-        plant(Entities.Bush)
-        move(North)
-    move(East)
+    while True:
+        clear()
+        for i in range(ws):
+            harvest_now()
+        if (get_pos_x() % 2 == 0 and get_pos_y() == 1) or (get_pos_x() % 2 == 1 and get_pos_y() % 2 == 0):
+            harvest_now()
+            water()
+            plant(Entities.Tree)
+        else:
+            plant(Entities.Bush)
+            move(North)
+        move(East)
 
 # Carrot Here	
 def carrot_harvest():
-    clear()
-    for i in range(ws):
-        harvest_now()
-        soil()
-        water()
-        plant(Entities.Carrot)
-        move(North)
-    move(East)
+    while True:
+        clear()
+        for i in range(ws):
+            soil_prep()
+            plant(Entities.Carrot)
+            move(North)
+        move(East)
 
 # Pumpkin Here	
-def pumpkin_harvest():    
+def pumpkin_harvest():
     clear()
     ready = []
     for _ in range(ws):
@@ -280,18 +279,16 @@ def poly():
             harvest()
 
 # Maze Starter Here
-def maze_starter():    
+def maze_starter(): 
     while True:
         if create_maze():
             if treasure_hunt():
                 continue
-    
-
 
 # Create Maze Here
 def create_maze():    
     set_world_size(8)
-    substance = get_world_size() * get_world_size()
+    substance = get_world_size() * num_unlocked(Unlocks.Mazes)
     plant(Entities.Bush)
     while True:
         if substance > get_world_size():
@@ -343,15 +340,13 @@ def treasure_hunt():
         if get_entity_type()==Entities.Treasure:
             harvest()
             return True
-            
-#weird_farm is not working, investigate and fix        
+        
 def weird_farm():
-    for i in range(ws):
-        harvest_now()
-        soil()
-        water()
-        plant(Entities.Carrot)
-        if num_items(Items.Fertilizer) > item_caps[Items.Fertilizer]:
-            use_item(Items.Fertilizer)
-        move(North)
-    move(East)
+    while num_items(Items.Weird_Substance) < item_caps[Items.Weird_Substance]:
+        for i in range(ws):
+            soil_prep()
+            plant(Entities.Carrot)
+            if num_items(Items.Fertilizer) > item_caps[Items.Fertilizer]:
+                use_item(Items.Fertilizer)
+            move(North)
+        move(East)    
