@@ -16,18 +16,6 @@ y = get_pos_y()
 
 ws = get_world_size()
 
-def move_to(target_x, target_y):
-    while get_pos_x() != target_x:
-        if (target_x - get_pos_x()) % get_world_size() > get_world_size() / 2:
-            move(West)
-        else:
-            move(East)
-    while get_pos_y() != target_y:
-        if (target_y - get_pos_y()) % get_world_size() > get_world_size() / 2:
-            move(South)
-        else:
-            move(North)
-
 def soil():
     if get_ground_type() != Grounds.Soil:
         till()
@@ -40,17 +28,39 @@ def harvest_now():
     if can_harvest():
         harvest()
 
-import farm
+def soil_prep():
+    if can_harvest():
+        harvest()
+    if get_ground_type() != Grounds.Soil:
+        till()
+    if get_water() < 0.3:
+        use_item(Items.Water)        
+
+def move_to(target_x, target_y):
+    while get_pos_x() != target_x:
+        if (target_x - get_pos_x()) % get_world_size() > get_world_size() / 2:
+            move(West)
+        else:
+            move(East)
+    while get_pos_y() != target_y:
+        if (target_y - get_pos_y()) % get_world_size() > get_world_size() / 2:
+            move(South)
+        else:
+            move(North)
+
+from farm import *
 target_items = [
-    (Items.Hay, item_caps[Items.Hay], farm.hay_harvest()),
-    (Items.Wood, item_caps[Items.Wood], farm.poly()),
-    (Items.Carrot, item_caps[Items.Carrot], farm.poly()),
-    (Items.Pumpkin, item_caps[Items.Pumpkin], farm.pumpkin_harvest()),
-    (Items.Bone, item_caps[Items.Bone], farm.dino()),
-    (Items.Cactus, item_caps[Items.Cactus], farm.cactus()),
-    (Items.Weird_Substance, item_caps[Items.Weird_Substance], farm.weird_farm()),
-    (Items.Gold, item_caps[Items.Gold], farm.maze_starter())
+    (Items.Hay, item_caps[Items.Hay], hay_harvest()),
+    (Items.Wood, item_caps[Items.Wood], poly()),
+    (Items.Carrot, item_caps[Items.Carrot], poly()),
+    (Items.Pumpkin, item_caps[Items.Pumpkin], pumpkin_harvest()),
+    (Items.Bone, item_caps[Items.Bone], dino()),
+    (Items.Cactus, item_caps[Items.Cactus], cactus()),
+    (Items.Power, item_caps[Items.Power], sunflower()),
+    (Items.Weird_Substance, item_caps[Items.Weird_Substance], weird_farm()),
+    (Items.Gold, item_caps[Items.Gold], maze_starter())
 ]
+
 
 unlockables = [
     Unlocks.Loops, Unlocks.Speed, Unlocks.Grass, Unlocks.Expand,
