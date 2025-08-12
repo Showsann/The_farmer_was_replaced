@@ -1,3 +1,5 @@
+# TODO: Immplement this into one cohesive code to run and have main as the checker
+
 from helpers import item_caps, x, y, ws, move_to, soil, water, harvest_now, soil_prep
 
 # Hay Here
