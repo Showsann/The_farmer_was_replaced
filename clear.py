@@ -1,1 +1,2 @@
+# clear the boazrd
 clear()
