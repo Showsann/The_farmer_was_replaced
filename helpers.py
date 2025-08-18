@@ -1,3 +1,5 @@
+# TODO: Most of this is fucked, will rewrite to improve quality
+
 item_caps = {
     Items.Hay : 1000000,
     Items.Wood : 1000000,
