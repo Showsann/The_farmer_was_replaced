@@ -1,2 +1,2 @@
-# clear the boazrd
+# clear the board
 clear()
