@@ -1,2 +1,2 @@
-# clear the board
+# clear the board.
 clear()
