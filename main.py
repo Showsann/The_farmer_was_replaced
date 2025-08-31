@@ -1,4 +1,4 @@
-# TODO: Update this so that it runs the master program over the whole farm script.
+# TODO: Update this so that it runs the master program over the whole farm script
 
 from helpers import (
 	item_caps,
