@@ -1,4 +1,4 @@
-# Simulation parameters
+# Simulation parameters.
 filename    = "sim1"                               # file to simulate
 sim_unlocks = None                                 # start with no unlocks
 sim_items   = {Items.Carrot: 10000, Items.Hay: 50} # Start with Carrots and Hay
