@@ -1,4 +1,4 @@
-# TODO: Most of this is fucked, will rewrite to improve quality.
+# TODO: Most of this is fucked, will rewrite to improve performance.
 
 item_caps = {
     Items.Hay : 1000000,
